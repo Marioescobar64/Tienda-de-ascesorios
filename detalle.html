@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalle del Producto</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <style>
+    .detalle-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .detalle-container img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #d291bc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="detalle-container">
+    <img id="imagen" src="" alt="">
+    <h2 id="nombre"></h2>
+    <p id="descripcion"></p>
+    <p><strong id="precio"></strong></p>
+    <a href="index.html" class="volver">Volver a tienda</a>
+  </div>
+
+  <script>
+    const productos = [
+      {
+        nombre: "Collar de Perlas",
+        precio: "$25.00",
+        descripcion: "Elegante collar de perlas naturales con broche de plata.",
+        imagen: "imagenes/collar.jpg"
+      },
+      {
+        nombre: "Pulsera Dorada",
+        precio: "$18.00",
+        descripcion: "Pulsera ajustable con baño dorado brillante.",
+        imagen: "imagenes/pulsera.jpg"
+      },
+      {
+        nombre: "Anillo Minimalista",
+        precio: "$12.00",
+        descripcion: "Anillo sencillo de acero inoxidable, estilo minimalista.",
+        imagen: "imagenes/anillo.jpg"
+      },
+      {
+        nombre: "Aretes Estrella",
+        precio: "$15.00",
+        descripcion: "Aretes colgantes en forma de estrella con cristales.",
+        imagen: "imagenes/aretes.jpg"
+      },
+      {
+        nombre: "Lentes de Sol Retro",
+        precio: "$22.00",
+        descripcion: "Lentes de sol estilo vintage con protección UV.",
+        imagen: "imagenes/Lentes.jpg"
+      },
+      {
+        nombre: "Bolso de Mano",
+        precio: "$35.00",
+        descripcion: "Bolso elegante de cuero sintético color rosado pastel.",
+        imagen: "imagenes/Bolso.jpg"
+      },
+      {
+        nombre: "Diadema Floral",
+        precio: "$10.00",
+        descripcion: "Diadema decorativa con flores de tela para eventos.",
+        imagen: "imagenes/diadema.jpg"
+      },
+      {
+        nombre: "Pañuelo de Seda",
+        precio: "$14.00",
+        descripcion: "Pañuelo estampado 100% seda, ideal para el cuello o cabello.",
+        imagen: "imagenes/panuelo.jpg"
+      },
+      {
+        nombre: "Reloj Casual",
+        precio: "$40.00",
+        descripcion: "Reloj moderno con correa de cuero ecológico.",
+        imagen: "imagenes/reloj.jpg"
+      },
+      {
+        nombre: "Cinturón Trenzado",
+        precio: "$16.00",
+        descripcion: "Cinturón elástico trenzado con hebilla metálica.",
+        imagen: "imagenes/cinturon.jpg"
+      }
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"), 10);
+    const producto = productos[id];
+
+    if (producto) {
+      document.getElementById("nombre").textContent = producto.nombre;
+      document.getElementById("descripcion").textContent = producto.descripcion;
+      document.getElementById("precio").textContent = producto.precio;
+      document.getElementById("imagen").src = producto.imagen;
+      document.getElementById("imagen").alt = producto.nombre;
+    } else {
+      document.querySelector(".detalle-container").innerHTML = "<h2>Producto no encontrado</h2><a href='index.html' class='volver'>Volver</a>";
+    }
+  </script>
+</body>
+</html>
